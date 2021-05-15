@@ -1,7 +1,23 @@
-export default  function Users (){
+import {useEffect, useState} from "react";
+
+
+export default  function Users (props){
+   let[users,setUsers] = useState([]);
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(value =>{
+                setUsers([...value]);
+            });
+    },[])
+
+
     return(
         <div>
-            Users
+        {/*    {*/}
+        {/*    users.map(value => <User key={value.id} item={value}/>)*/}
+        {/*}*/}
+
         </div>
     )
-}
+};
